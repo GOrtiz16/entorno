@@ -12,7 +12,7 @@ jobs:
       - name: Shell
         run: |
           echo $AMBIENTE
-          echo ${{ secrets.MY_SECRET }}
-          echo ${{ vars.MY_VARIABLE }}
+          echo ${{ secrets.MY_SECRET_${{ env.AMBIENTE }} }}
+          echo ${{ vars.MY_VARIABLE_${{ env.AMBIENTE }} }}
 
 
