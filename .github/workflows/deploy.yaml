@@ -2,7 +2,6 @@ name: entorno
 on:
   workflow_dispatch:
 
-
 env:
   AMBIENTE: ${{ (github.ref == 'refs/heads/main' && 'dev') }}
 
@@ -10,13 +9,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup secret
-        run: echo "MY_SECRET_VALUE=${{ secrets['MY_SECRET_' + env.AMBIENTE] }}" >> $GITHUB_ENV
-
-      - name: Shell
+      - name: Setup secret name
+        run: echo "SECRET_NAME=MY_SECRET_${{ env.AMBIENTE }}" >> $GITHUB_ENV
+      - name: Use secret name
         run: |
-          echo $AMBIENTE
-          echo $MY_SECRET_VALUE
+          echo "Using secret name: $SECRET_NAME"
+          echo ${{ secrets[env.SECRET_NAME] }}
+
 
 # env:
 #   AMBIENTE: ${{ (github.ref == 'refs/heads/main' && 'dev') }}
