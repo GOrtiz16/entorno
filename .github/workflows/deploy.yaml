@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Shell
-        run: echo $AMBIENTE
+        run: |
+          echo $AMBIENTE
+          echo ${{ secrets.MY_SECRET }}
+          echo ${{ vars.MY_VAR }}
 
 
