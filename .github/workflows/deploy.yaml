@@ -1,0 +1,15 @@
+name: entorno
+on:
+  workflow_dispatch:
+
+env:
+  AMBIENTE: ${{ (github.ref == 'refs/heads/main' && 'dev') }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Shell
+        run: echo $AMBIENTE
+
+
